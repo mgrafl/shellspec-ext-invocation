@@ -25,11 +25,8 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
-        with:
-          path: src
-      - run: ls src
-      - run: ls .
+      - run: ls -hals .
 
       # Runs a single command using the runners shell
       - name: Run shellspec
-        run: shellspec --directory shellspec-ext-invocation
+        run: shellspec
