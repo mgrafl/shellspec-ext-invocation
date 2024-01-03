@@ -5,6 +5,17 @@
 # the "have received arguments" expectation.
 
 Describe 'capture invocation'
+  # Your typical usage example:
+  It 'can be used inside a mock'
+    Mock foo
+      capture_invocation  foo "$@"
+    End
+    When run  foo bar
+    The number of mocks should equal 1
+    The 1st mock should have received arguments  foo bar
+  End
+
+  # Demonstrates available aliases for subjects
   It 'captures a simple invocation without arguments'
     When call capture_invocation  foo
     
@@ -15,17 +26,8 @@ Describe 'capture invocation'
     The number of mocks should equal 1
 
     # aliases
-    The first invocation should have received arguments  foox
+    The first invocation should have received arguments  foo
     The first mock should have received arguments  foo
-  End
-
-  It 'can be used inside a mock'
-    Mock foo
-      capture_invocation  foo "$@"
-    End
-    When run  foo bar
-    The number of mocks should equal 1
-    The 1st mock should have received arguments  foo bar
   End
 
   It 'captures an empty invocation'
