@@ -15,7 +15,7 @@ Describe 'capture invocation'
     The number of mocks should equal 1
 
     # aliases
-    The first invocation should have received arguments  foo
+    The first invocation should have received arguments  foox
     The first mock should have received arguments  foo
   End
 
@@ -24,6 +24,7 @@ Describe 'capture invocation'
       capture_invocation  foo "$@"
     End
     When run  foo bar
+    The number of mocks should equal 1
     The 1st mock should have received arguments  foo bar
   End
 
