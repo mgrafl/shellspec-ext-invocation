@@ -1,0 +1,5 @@
+# shellcheck disable=all
+
+--shell=/bin/bash
+--load-path=lib/extension/invocation
+--require capture_invocation_helper
