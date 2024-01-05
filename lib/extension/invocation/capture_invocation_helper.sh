@@ -21,7 +21,7 @@ capture_invocation_helper_configure() {
 #   It 'captures an invocation'
 #     Mock foo
 #       # Adding "foo" as first argument is not strictly required,
-#       # but it helps for distinguishing between multiple mocked functions.
+#       # but it helps for distinguishing between multiple mocked functions/commands.
 #       capture_invocation  foo "$@"
 #     End
 #     When run  foo bar

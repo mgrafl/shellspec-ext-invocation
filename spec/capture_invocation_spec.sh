@@ -4,30 +4,64 @@
 # This includes the "mock" custom subject and
 # the "have received arguments" expectation.
 
-Describe 'capture invocation'
+Describe 'capture_invocation'
   # Your typical usage example:
-  It 'can be used inside a mock'
-    Mock foo
-      capture_invocation  foo "$@"
+  Describe 'capture_invocation in a simple mock'
+    It 'captures an invocation and its arguments'
+      Mock git
+        capture_invocation  git "$@"
+      End
+      When run  git commit "-m" "Initial commit"
+      The number of mocks should equal 1
+      The first mock should have received arguments  git commit "-m" "Initial commit"
     End
-    When run  foo bar
-    The number of mocks should equal 1
-    The 1st mock should have received arguments  foo bar
+  End
+
+  Describe 'capture_invocation in multiple mocks'
+    It 'captures multiple invocations and their arguments'
+      # Function mock:
+      edit_file() {
+        capture_invocation  edit_file "$@"
+      }
+
+      # Command mock:
+      Mock git
+        capture_invocation  git "$@"
+      End
+
+      some_complex_task() {
+        # Do stuff
+        edit_file "$1"
+        git add "--" "$1"
+        git commit "-m" "$2"
+        git push
+        # Do more stuff
+      }
+      When call some_complex_task "README.md" "Initial commit"
+      The number of mocks should equal 4
+      The 1st mock should have received arguments  edit_file "README.md"
+      The 2nd mock should have received arguments  git add "--" "README.md"
+      The 3rd mock should have received arguments  git commit "-m" "Initial commit"
+      The 4th mock should have received arguments  git push
+    End
   End
 
   # Demonstrates available aliases for subjects
-  It 'captures a simple invocation without arguments'
-    When call capture_invocation  foo
-    
-    # aliases
-    The number of invocations should equal 1
-    The count of invocations should equal 1
-    The count of mocks should equal 1
-    The number of mocks should equal 1
+  Describe 'capture_invocation expectations have aliases'
+    It 'captures a simple invocation without additional arguments'
+      When call capture_invocation  foo
+      
+      # aliases
+      The invocations count should equal 1
+      The count of invocations should equal 1
+      The number of invocations should equal 1
+      The count of mocks should equal 1
+      The number of mocks should equal 1
 
-    # aliases
-    The first invocation should have received arguments  foo
-    The first mock should have received arguments  foo
+      # aliases
+      The first invocation should have received arguments  foo
+      The mock 1 should have received arguments  foo
+    End
   End
 
   It 'captures an empty invocation'
