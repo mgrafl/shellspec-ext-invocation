@@ -1,5 +1,8 @@
 # ShellSpec Extension: Invocation
 
+[![License](https://img.shields.io/github/license/shellspec/shellspec.svg)](https://github.com/mgrafl/shellspec-ext-invocation/blob/master/LICENSE)
+![Docker Image Version (latest semver)](https://img.shields.io/docker/v/mgrafl/shellspec-ext-invocation?label=DockerHub)
+
 A [ShellSpec](https://github.com/shellspec/shellspec) extension for capturing mock invocations.
 
 
@@ -100,4 +103,4 @@ docker run --rm -t -v ".:/src" mgrafl/shellspec-ext-invocation
 
 ## Limitations
 
-This extension is implemented in bash and is not POSIX-compatible.
+This extension is implemented in bash and is not POSIX-compliant.
