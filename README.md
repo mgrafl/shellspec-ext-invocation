@@ -1,7 +1,7 @@
 # ShellSpec Extension: Invocation
 
 [![License](https://img.shields.io/github/license/shellspec/shellspec.svg)](https://github.com/mgrafl/shellspec-ext-invocation/blob/master/LICENSE)
-![Docker Image Version (latest semver)](https://img.shields.io/docker/v/mgrafl/shellspec-ext-invocation?label=DockerHub)
+[![Docker Image Version (latest semver)](https://img.shields.io/docker/v/mgrafl/shellspec-ext-invocation?label=DockerHub)](https://hub.docker.com/r/mgrafl/shellspec-ext-invocation)
 
 A [ShellSpec](https://github.com/shellspec/shellspec) extension for capturing mock invocations.
 
