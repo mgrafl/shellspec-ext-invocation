@@ -78,9 +78,9 @@ Describe 'capture_invocation expectations have aliases'
 End
 ```
 
-This extension defines:
+This extension consists of:
 * The `capture_invocation` function to store the command name and the supplied arguments.
-* A ShellSpec *subject* `number of mocks` (aliases are `number of invocations`, `count of mocks`, and `count of invocations`) the counts how many mocks have been invoked. 
+* A ShellSpec *subject* `number of mocks` (aliases are `number of invocations`, `count of mocks`, and `count of invocations`) that counts how many mocks have been invoked. 
 * A ShellSpec *subject* `mock` (alias: `invocation`) to select an invocation for verification matching.
 * A ShellSpec *matcher* `have received arguments` to match the selected invocation against expected arguments.
 
