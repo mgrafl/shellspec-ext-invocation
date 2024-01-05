@@ -20,8 +20,8 @@ Describe 'capture_invocation in a simple mock'
 End
 ```
 
-[!TIP]
-Passing the initial command ("git" in the above example) as first argument to `capture_invocation` is not strictly required, but it helps for distinguishing between multiple mocked functions/commands.
+> [!TIP]
+> Passing the initial command ("git" in the above example) as first argument to `capture_invocation` is not strictly required, but it helps for distinguishing between multiple mocked functions/commands.
 
 When [mocking](https://github.com/shellspec/shellspec/#mocking) functions or commands in ShellSpec, mocks might get invoked multiple times with different arguments.
 
