@@ -103,4 +103,19 @@ docker run --rm -t -v ".:/src" mgrafl/shellspec-ext-invocation
 
 ## Limitations
 
-This extension is implemented in bash and is not POSIX-compliant.
+This extension is implemented in Bash and is not POSIX-compliant.
+
+
+## Contributing
+
+Contributions to this project via Merge Requests are welcome. 
+
+Some general guidelines:
+* Unit test your code via [ShellSpec](https://github.com/shellspec/shellspec).
+* Please document all functions and any non-trivial code. Keep in mind that not everyone is an expert on advanced Bash syntax.
+* Use [ShellCheck](https://github.com/koalaman/shellcheck) for static code analysis. There is a [ShellCheck extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=timonwong.shellcheck).
+* Follow the Google [Shell Style Guide](https://google.github.io/styleguide/shellguide.html).
+
+
+## License
+This project is licensed under the [MIT license](LICENSE).
