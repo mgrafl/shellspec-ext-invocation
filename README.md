@@ -98,25 +98,26 @@ docker run --rm -t -v ".:/src" mgrafl/shellspec-ext-invocation
 
 ### Linux
 
-Assuming the code from this repository is located in `/path/to/shellspec-ext-invocation`, run directly as: 
+Assuming the code from this repository is located in `/path/to/shellspec-ext-invocation/`, run `shellspec` directly as: 
 
 ```sh
 shellspec --shell=/bin/bash --load-path=/path/to/shellpec-ext-invocation/lib/extension/invocation --require capture_invocation_helper
 ```
 
-or install once as
+or:
+
 
 ```sh
 PATH_TO_SHELLSPEC_EXT_INVOCATION="/path/to/shellspec-ext-invocation/"
 PATH="${PATH_TO_SHELLSPEC_EXT_INVOCATION}:${PATH}"
 chmod +x "${PATH_TO_SHELLSPEC_EXT_INVOCATION}shellspec-ext-invocation"
-```
 
-and then run as
-
-```sh
+# Append ShellSpec CLI parameters as needed
 shellspec-ext-invocation
 ```
+
+[ShellSpec CLI](https://github.com/shellspec/shellspec#shellspec-cli) parameters can be appended to the command.
+
 
 ## Limitations
 
