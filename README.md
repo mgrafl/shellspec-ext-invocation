@@ -96,7 +96,10 @@ docker run --rm -t -v ".:/src" mgrafl/shellspec-ext-invocation
 ```
 
 
-### Linux
+<details>
+  <summary>
+    <h3>Linux</h3>
+  </summary>
 
 Assuming the code from this repository is located in `/path/to/shellspec-ext-invocation/`, run `shellspec` directly as: 
 
@@ -117,7 +120,7 @@ shellspec-ext-invocation
 ```
 
 [ShellSpec CLI](https://github.com/shellspec/shellspec#shellspec-cli) parameters can be appended to the command.
-
+</details>
 
 ## Limitations
 
