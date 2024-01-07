@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# Use bash, add the location of the extension to the load-path, and require the extension
+shellspec --shell=/bin/bash "--load-path=${PATH_TO_SHELLSPEC_EXT_INVOCATION}lib/extension/invocation" --require capture_invocation_helper  "$@"

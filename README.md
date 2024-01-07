@@ -87,18 +87,35 @@ This extension consists of:
 
 ## Usage
 
-### Linux
-
-Assuming the code from this repository is located in `/path/to/shellspec-ext-invocation`: 
-
-```
-shellspec --shell=/bin/bash --load-path=/path/to/shellpec-ext-invocation/lib/extension/invocation --require capture_invocation_helper
-```
+The easiest way to run the unit tests is via the dedicated Docker image [mgrafl/shellspec-ext-invocation](https://hub.docker.com/r/mgrafl/shellspec-ext-invocation).
 
 ### Docker
 
 ```
 docker run --rm -t -v ".:/src" mgrafl/shellspec-ext-invocation
+```
+
+
+### Linux
+
+Assuming the code from this repository is located in `/path/to/shellspec-ext-invocation`, run directly as: 
+
+```sh
+shellspec --shell=/bin/bash --load-path=/path/to/shellpec-ext-invocation/lib/extension/invocation --require capture_invocation_helper
+```
+
+or install once as
+
+```sh
+PATH_TO_SHELLSPEC_EXT_INVOCATION="/path/to/shellspec-ext-invocation/"
+PATH="${PATH_TO_SHELLSPEC_EXT_INVOCATION}:${PATH}"
+chmod +x "${PATH_TO_SHELLSPEC_EXT_INVOCATION}shellspec-ext-invocation"
+```
+
+and then run as
+
+```sh
+shellspec-ext-invocation
 ```
 
 ## Limitations

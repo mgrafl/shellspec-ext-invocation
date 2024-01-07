@@ -2,7 +2,10 @@ FROM shellspec/shellspec:kcov
 
 LABEL org.opencontainers.image.authors="Michael Grafl (https://github.com/mgrafl)" \
       org.opencontainers.image.ref.name="mgrafl/shellspec-ext-invocation"
-COPY lib/extension/invocation LICENSE /opt/shellspec/lib/extension/invocation/
+ENV PATH_TO_SHELLSPEC_EXT_INVOCATION /opt/shellspec/
+#ENV PATH "${PATH_TO_SHELLSPEC_EXT_INVOCATION}:${PATH}"
+COPY lib/extension/invocation LICENSE ${PATH_TO_SHELLSPEC_EXT_INVOCATION}lib/extension/invocation/
+COPY shellspec-ext-invocation ${PATH_TO_SHELLSPEC_EXT_INVOCATION}
 
-# Use bash, add the (slightly altered) location of the extension to the load-path, and require the extension
-ENTRYPOINT [ "shellspec", "--shell=/bin/bash", "--load-path=/opt/shellspec/lib/extension/invocation", "--require", "capture_invocation_helper" ]
+
+ENTRYPOINT [ "shellspec-ext-invocation" ]
