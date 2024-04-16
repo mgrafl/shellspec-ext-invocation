@@ -101,6 +101,9 @@ docker run --rm -t -v ".:/src" mgrafl/shellspec-ext-invocation
     <h3>Linux</h3>
   </summary>
 
+Prefer the dedicated Docker image over local installation. 
+Local installation instructions are only provided for the sake of completeness.
+
 Assuming the code from this repository is located in `/path/to/shellspec-ext-invocation/`, run `shellspec` directly as: 
 
 ```sh
