@@ -282,6 +282,22 @@ Describe 'capture_invocation'
       End
     End
 
+    Describe 'with previously captured invocation with arguments containing angle brackets'
+      BeforeEach 'capture_invocation  foo bar "<bla>bla"'
+      subject() {
+        %- 1
+      }
+
+      It 'matches invocation'
+        When run shellspec_matcher_have_received_arguments  foo bar "<bla>bla"
+        The status should be success
+      End
+      It 'does not match a different invocation'
+        When run shellspec_matcher_have_received_arguments  foo bar "blub"
+        The status should be failure
+      End
+    End
+
     Describe 'with previously captured invocations'
       capture_multiple_invocations() {
         capture_invocation  foo bar
@@ -295,6 +311,58 @@ Describe 'capture_invocation'
           %- 1
         }
         When run shellspec_matcher_have_received_arguments  foo bar
+        The status should be success
+      End
+      It 'matches the second invocation'
+        subject() {
+          %- 2
+        }
+        When run shellspec_matcher_have_received_arguments  bla
+        The status should be success
+      End
+      It 'matches the third invocation containing empty argument'
+        subject() {
+          %- 3
+        }
+        When run shellspec_matcher_have_received_arguments  blub ''
+        The status should be success
+      End
+      It 'does not match the third invocation without empty argument'
+        subject() {
+          %- 3
+        }
+        When run shellspec_matcher_have_received_arguments  blub
+        The status should be failure
+      End
+      It 'does not match the third invocation with additional empty argument'
+        subject() {
+          %- 3
+        }
+        When run shellspec_matcher_have_received_arguments  blub '' ''
+        The status should be failure
+      End
+      It 'does not match concatenation of two invocations'
+        subject() {
+          %- 1
+        }
+        When run shellspec_matcher_have_received_arguments  foo bar bla
+        The status should be failure
+      End
+    End
+
+    Describe 'with previously captured invocations containing sepcial characters'
+      capture_multiple_invocations() {
+        capture_invocation  foo '<bar> bar %20 " {}'
+        capture_invocation  bla
+        capture_invocation  blub ''
+      }
+      BeforeEach capture_multiple_invocations
+
+      It 'matches the first invocation'
+        subject() {
+          %- 1
+        }
+        When run shellspec_matcher_have_received_arguments  foo '<bar> bar %20 " {}'
         The status should be success
       End
       It 'matches the second invocation'

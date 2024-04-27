@@ -36,7 +36,7 @@ shellspec_matcher_have_received_arguments() {
 
     local overall_invocations_length
     # shellcheck disable=SC2154
-    overall_invocations_length="${#SHELLPEC_EXT_CAPTURED_INVOCATIONS[@]}"
+    overall_invocations_length="${#SHELLSPEC_EXT_CAPTURED_INVOCATIONS[@]}"
 
     # convert to zero-based index
     local mock_index
@@ -75,7 +75,7 @@ shellspec_matcher_have_received_arguments() {
 
     # Slice array
     local actual_arguments
-    actual_arguments=("${SHELLPEC_EXT_CAPTURED_INVOCATIONS[@]:$invocation_start_index:$actual_invocation_length}")
+    actual_arguments=("${SHELLSPEC_EXT_CAPTURED_INVOCATIONS[@]:$invocation_start_index:$actual_invocation_length}")
 
     # Not using actual_invocation_length because it might be larger (if SHELLSPEC_EXT_INVOCATION_START_INDICES was corrputed)
     if [[ "$#" != "${#actual_arguments[@]}" ]]; then

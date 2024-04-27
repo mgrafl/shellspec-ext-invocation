@@ -33,11 +33,11 @@ capture_invocation_helper_configure() {
 #   $1..n - invocation arguments
 #######################################
 capture_invocation() {
-  SHELLSPEC_EXT_INVOCATION_START_INDICES+=("${#SHELLPEC_EXT_CAPTURED_INVOCATIONS[@]}")
-  SHELLPEC_EXT_CAPTURED_INVOCATIONS+=("$@")
+  SHELLSPEC_EXT_INVOCATION_START_INDICES+=("${#SHELLSPEC_EXT_CAPTURED_INVOCATIONS[@]}")
+  SHELLSPEC_EXT_CAPTURED_INVOCATIONS+=("$@")
   # The %preserve directive can only be used as part of the spec, not in helper functions. 
   # Internally, it is mapped to shellspec_preserve
-  shellspec_preserve SHELLSPEC_EXT_INVOCATION_START_INDICES SHELLPEC_EXT_CAPTURED_INVOCATIONS
+  shellspec_preserve SHELLSPEC_EXT_INVOCATION_START_INDICES SHELLSPEC_EXT_CAPTURED_INVOCATIONS
 }
 # Exporting the function so it can be called in Mocks (see https://github.com/shellspec/shellspec#command-based-mock)
 export -f capture_invocation
