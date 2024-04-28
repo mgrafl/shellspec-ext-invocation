@@ -18,5 +18,7 @@ shellspec_subject_invocation() {
   SHELLSPEC_SUBJECT="$1"
   shift
 
+  # The ${1+'"$@"'} is workaround for an old and irrelevant bourne shell bug (https://unix.stackexchange.com/a/68488), 
+  # but used here only for consistency with similar calls in shellspec.
   eval shellspec_syntax_dispatch modifier ${1+'"$@"'}
 }

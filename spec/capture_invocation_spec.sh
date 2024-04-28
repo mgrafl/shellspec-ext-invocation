@@ -87,7 +87,7 @@ Describe 'capture_invocation'
     The mock 3 should have received arguments  frobnicate 'foo filter'
   End
 
-  Describe 'count_of_mocks.sh'
+  Describe 'invocations_count.sh'
     # From https://github.com/shellspec/shellspec/blob/0.28.1/helper/spec_helper.sh#L99
     subject_mock() {
       shellspec_output() { shellspec_puts "$1" >&2; }
@@ -123,7 +123,9 @@ Describe 'capture_invocation'
     End
   End
 
-  Describe 'mock.sh'
+
+  # Now the internal stuff
+  Describe 'invocation.sh'
     # From https://github.com/shellspec/shellspec/blob/0.28.1/helper/spec_helper.sh#L99
     subject_mock() {
       shellspec_output() { shellspec_puts "$1" >&2; }
@@ -175,6 +177,7 @@ Describe 'capture_invocation'
   End
 
   Describe 'have_received_arguments.sh'
+    # From https://github.com/shellspec/shellspec/blob/0.28.1/helper/spec_helper.sh
     set_subject() {
       if subject > /dev/null; then
         SHELLSPEC_SUBJECT=$(subject; echo _)
@@ -183,6 +186,7 @@ Describe 'capture_invocation'
         unset SHELLSPEC_SUBJECT ||:
       fi
     }
+    # From https://github.com/shellspec/shellspec/blob/0.28.1/helper/spec_helper.sh
     matcher_mock() {
       shellspec_output() { shellspec_puts "$1" >&2; }
       shellspec_proxy "shellspec_matcher_do_match" "shellspec_matcher__match"
