@@ -130,6 +130,14 @@ shellspec-ext-invocation
 This extension is implemented in Bash and is not POSIX-compliant.
 
 
+## Links
+
+* [ShellSpec](https://github.com/shellspec/shellspec)
+* Docker image [mgrafl/shellspec-ext-invocation](https://hub.docker.com/r/mgrafl/shellspec-ext-invocation)
+* Project for [Unit testing GitLab CI/CD job scripts via ShellSpec](https://gitlab.com/mgrafl/gitlab-ci-shellspec) that uses this extension 
+* Blog post on [Testing GitLab CI/CD job scripts](https://mgrafl.wordpress.com/2023/12/18/testing-gitlab-ci-cd-job-scripts/)
+
+
 ## Contributing
 
 Contributions to this project are always welcome. 
