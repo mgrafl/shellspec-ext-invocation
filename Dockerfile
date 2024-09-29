@@ -1,4 +1,4 @@
-FROM shellspec/shellspec:kcov
+FROM shellspec/shellspec:kcov as plain
 
 LABEL org.opencontainers.image.authors="Michael Grafl (https://github.com/mgrafl)" \
       org.opencontainers.image.ref.name="mgrafl/shellspec-ext-invocation"
@@ -9,3 +9,6 @@ COPY shellspec-ext-invocation ${PATH_TO_SHELLSPEC_EXT_INVOCATION}
 RUN chmod +x "${PATH_TO_SHELLSPEC_EXT_INVOCATION}shellspec-ext-invocation"
 
 ENTRYPOINT [ "shellspec-ext-invocation" ]
+
+FROM plain as docker
+RUN apk add --no-cache docker
