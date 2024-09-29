@@ -78,7 +78,7 @@ jobs:
           # For other targets (currently "docker"), use tags "docker" and release version "1.0.0-docker".
           tags: |
             latest,enable=${{ matrix.target == 'plain' }}
-            type=raw,value${{ matrix.target }},enable=${{ matrix.target != 'plain' }}
+            type=raw,value=${{ matrix.target }},enable=${{ matrix.target != 'plain' }}
             type=semver,pattern={{version}},enable=${{ matrix.target == 'plain' }}
             type=semver,pattern={{version}},suffix=-${{ matrix.target }},enable=${{ matrix.target != 'plain' }}
 
