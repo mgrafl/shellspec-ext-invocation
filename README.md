@@ -95,13 +95,29 @@ The easiest way to run the unit tests is via the dedicated Docker image [mgrafl/
 docker run --rm -t -v ".:/src" mgrafl/shellspec-ext-invocation
 ```
 
+#### Tests using Docker
+
+The Docker image also has a variant that has Docker installed in the container. 
+This enables tests that ramp up another Docker container. 
+In order to give the container access to the Docker host by mounting the Docker socket.
+
+Under Linux:
+```
+docker run --rm -t -v ".:/src" -v "/var/run/docker.sock:/var/run/docker.sock" mgrafl/shellspec-ext-invocation:docker
+```
+
+Under Windows (with an additional slash at the beginning of the mount source):
+```
+docker run --rm -t -v ".:/src" -v "//var/run/docker.sock:/var/run/docker.sock" mgrafl/shellspec-ext-invocation:docker
+```
+
 
 <details>
   <summary>
     <h3>Linux</h3>
   </summary>
 
-Prefer the dedicated Docker image over local installation. 
+Prefer the dedicated Docker image described above over local installation. 
 Local installation instructions are only provided for the sake of completeness.
 
 Assuming the code from this repository is located in `/path/to/shellspec-ext-invocation/`, run `shellspec` directly as: 
