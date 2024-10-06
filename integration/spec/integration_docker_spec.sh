@@ -10,6 +10,7 @@
 Describe 'docker image variant'
   It 'starts a container based on the mounted Docker socket'
     When run  docker run --rm alpine:latest echo "Hello, World!"
+    The stderr should be defined
     The output should equal "Hello, World!"
   End
 End
