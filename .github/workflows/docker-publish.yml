@@ -116,3 +116,19 @@ jobs:
       #   # This step uses the identity token to provision an ephemeral certificate
       #   # against the sigstore community Fulcio instance.
       #   run: echo "${TAGS}" | xargs -I {} cosign sign --yes {}@${DIGEST}
+
+  integration-test:
+    # After the build job, run the integration tests based on the new image
+    needs: build
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    container: mgrafl/shellspec-ext-invocation:docker
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+
+      # Runs a single command using the runners shell
+      - name: Run shellspec
+        run: shellspec -c integration
